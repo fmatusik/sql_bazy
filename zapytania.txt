@@ -1,0 +1,81 @@
+CREATE
+	-DATABASE
+	-TABLE
+	-USER
+
+DROP
+	-TABLE
+	-DB
+
+DELETE	
+	-TABLE
+
+TRUNCATE
+	-TABLE
+
+UPDATE	
+	-TABLE
+
+INSERT INTO
+	-TABLE
+
+
+========================== COS TAM Z TABLICY ========================
+1. CREATE DATABASE chomik;
+CREATE DATABASE IF NOT EXISTS chomik;
+DROP DATABASE chomik;
+
+use chomik;
+
+CREATE TABLE if not exists murzyn(
+	id int auto_increment primary key,
+	name text not null,
+	surname varchar(50) default('ali baba'),
+	sex enum('K','M'),
+	age int not null default(18),
+	birth_date date
+);
+
+demimal -> ilosc liczb po przecinku czy jakos tak
+
+ALTER -> add/change/modify/remove column
+
+ALTER TABLE murzyn ADD COLUMN color_eye varchar(15) default('blue');
+
+relacja:
+
+CREATE TABLE IF NOT EXISTS busz(
+	id_busz int primary key auto_increment,
+	name text,
+	foreign key(id_busz) references murzyn(id)
+)
+
+
+INSERT INTO nazwa table(pola) VALUES(wartosci, po, przecinku)
+INSERT INTO murzyn(name, surname, sex, age, birth_date) VALUES('Alhamdulillah', 'Allahu Akbar', 'K', 67, '2019-02-17');
+INSERT INTO murzyn(name, surname, sex, age, birth_date) VALUES('Alhamdulillah', 'Allahu Akbar', 'K', 67, curdate());
+INSERT INTO murzyn() VALUES(NULL, 'Alhamdulillah', 'Allahu Akbar', 'K', 67, curdate());
+
+DELETE
+DELETE FROM murzyn;
+TRUNCATE murzyn;
+DELETE FROM murzyn WHERE sex='K';
+
+CREATE USER 'bambo'@'localhost' IDENTIFIED BY 'haslo123';
+
+GRANT => add
+revoke => delete
+
+GRANT ALL PRIVILEGES;
+GRANT select, insert, delete ON chomik.* to 'bambo'@'localhost';
+FLUSH PRIVILEGES -> odświerza
+
+baza.tabela
+*.* -> wszystko
+
+REVOKE delete on chomik.murzyn FROM 'bambo'@'localhost';
+
+DROP TABLE busz;
+DROP TABLE murzyn;
+DROP DATABASE chomik;
+DROP USER 'bambo'@'localhost';
