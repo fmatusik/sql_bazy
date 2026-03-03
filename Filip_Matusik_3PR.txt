@@ -1,0 +1,55 @@
+1.
+CREATE USER 'anna'@'localhost' identified by "Anna4!";
+GRANT INSERT, UPDATE, SELECT ON ratownictwo.zgloszenia TO 'anna'@'localhost';
+
+2.
+CREATE USER 'zaopatrzenie'@'localhost' IDENTIFIED BY 'Z@op@atrzenie';
+GRANT SELECT, UPDATE, INSERT, DELETE ON firma.* TO 'zaopatrzenie'@'localhost';
+
+3. 
+ALTER TABLE miasta ADD wojewodztwo VARCHAR(255);
+
+4.
+ALTER TABLE Ryby ADD dobowy_limit TINYINT UNSIGNED;
+
+
+5.
+ALTER TABLE zapisy CHANGE id_klienta id_sluchacza INT;
+
+6.
+ALTER TABLE ksiazka
+ADD COLUMN rezerwacja TINYINT(1) DEFAULT 0;
+
+7.
+ALTER TABLE wycieczki DROP COLUMN dataWyjazdu;
+
+8.
+UPDATE karty_wedkarskie SET punkty = 10 WHERE id = 2;
+
+9.
+UPDATE zadania SET wpis = "Wycieczka: Karkonosze" WHERE dataZadania = '2020-08-27';
+
+10.
+UPDATE tatuaze SET cena = cena * 1.10 WHERE kolor = 'czerwony';
+
+11.
+INSERT INTO czytelnicy(imie, nazwisko, kod) VALUES("Ewa", "Kowalska", "145321");
+
+12.
+INSERT INTO osiagniecia(gora_id, osoba_id, data_zdobycia) VALUES(182, 4, "2024-06-08");
+INSERT INTO osoby(nazwisko, imie, funkcja, email) VALUES("M.", "Miłosz", "uczestnik", "m.milosz@zdobywcyxyz.pl");
+
+
+13.
+DELETE FROM pogoda where id = 8;
+
+14.
+DROP TABLE uzytkownik;
+
+15.
+CREATE TABLE wpisy(
+id INT auto_increment primary key NOT NULL,
+wpis TEXT,
+uzytkownik_id INT UNSIGNED NOT NULL);
+
+

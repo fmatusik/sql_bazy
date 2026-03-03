@@ -1,0 +1,79 @@
+baza: fotografia
+
+wszystkie dane z tabeli zamowienia
+SELECT * FROM zamowienia;
+
+
+wypisze wszystkie nie powtarzające się nr_klienta z tabeli zamowienia
+SELECT distinct nr_klienta FROM zamowienia;
+
+wypisze ile zamówień mają poszczególni klienci
+klienci - nr_klienta
+
+//COUNT NIE LICZY NULLI 
+//dzieki group by to zapytanie działa :)
+SELECT COUNT(nr_klienta), nr_klienta from zamowienia GROUP BY nr_klienta;
+
+wypisze ile zamówień mją poszczególni klienci - nr_klienta rosnąco wg ilości zamówień
+SELECT COUNT(nr_klienta), nr_klienta from zamowienia GROUP BY nr_klienta ORDER BY COUNT(nr_klienta) ASC;
+
+wypisze ile zamówień mją poszczególni klienci - nr_klienta malejaca wg ilości zamówień i wypisze 3 o największej ilosci zamowien
+SELECT COUNT(nr_klienta), nr_klienta from zamowienia GROUP BY nr_klienta ORDER BY COUNT(nr_klienta) DESC LIMIT 3;
+
+policzy jaką liczbę odbitek mamy w zamówieniach 
+SELECT SUM(liczba_odbitek) from zamowienia;
+
+policzy jaką liczbę odbitek mamy w zamówieniach dla klienta o nr_klienta-2
+SELECT SUM(liczba_odbitek) from zamowienia WHERE nr_klienta = 2;
+
+
+policzy jaką liczbę odbitek z aliasem "liczba odbitek" mamy w zamówieniach dla klienta o nr_klienta-2
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta = 2;
+
+policzy jaką liczbę odbitek z aliasem "liczba odbitek" mamy w zamówieniach dla klienta o nr_klienta-2,3,4
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta = 2 || nr_klienta = 3 || nr_klienta = 4;
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta = 2 or nr_klienta = 3 or nr_klienta = 4;
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta >= 2 and nr_klienta <= 4;
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta BETWEEN 2 and 4;
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta IN(2,3,4);
+
+operatory logiczne: and && or || not !
+
+
+policzy jaką liczbę odbitek z aliasem "liczba odbitek" mamy w zamówieniach dla klienta o NIE nr_klienta-2,3,4
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta < 2 and nr_klienta > 4;
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta NOT BETWEEN 2 and 4;
+SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta NOT IN(2,3,4);
+
+policz średnią liczbę odbitek dla rodzaju papieru
+SELECT AVG(liczba_odbitek) as "Średnia" from zamowienia GROUP BY rodzaj;
+
+
+policz zaokrągloną do 2 miejsc po przecinku średnią liczbę odbitek dla rodzaju papieru
+SELECT ROUND(AVG(liczba_odbitek),1) as "Średnia" from zamowienia GROUP BY rodzaj;
+
+ceil, floor jeszcze są
+
+wypisze dane zamowień które maja w nazwie pliku litere 'd'
+
+fun stringowe:
+left(), right(), length(), upper(), lower(), like, not like
+
+_ - jeden znak
+% - kilka znaków
+
+SELECT * from zamowienia WHERE plik like '%d%.jpg';
+
+
+SELECT UPPER(rodzaj) from zamowienia WHERE plik like '%d%.jpg';
+
+
+
+
+
+
+
+
+
+
+
