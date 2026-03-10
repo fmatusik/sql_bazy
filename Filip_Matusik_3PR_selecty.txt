@@ -1,0 +1,59 @@
+kw1 check data
+SELECT miesiac, rok FROM zadania WHERE dataZadania = '2020-07-01';
+
+kw2 
+SELECT dataZadania, wpis FROM zadania WHERE miesiac = "lipiec";
+
+kw3
+SELECT imie, nazwisko, stanowisko FROM kadra WHERE stanowisko = "fryzjer" OR stanowisko = "stylista";
+
+kw4
+SELECT tytul, plik from zdjecia WHERE polubienia >= 100;
+
+kw5
+SELECT id, nazwa, zdjecie FROM gry;
+
+kw6
+SELECT nazwa, LEFT(opis,100) punkty, cena FROM gry WHERE id=1;
+
+kw7
+SELECT nazwa, punkty FROM gry ORDER BY punkty DESC LIMIT 5;
+
+kw8
+SELECT wpis FROM zadania WHERE dataZadanie >= '2020-07-01' AND dataZadania <= '2020-07-09' and wpis != NULL GROUP BY wpis;
+
+kw9
+SELECT miesiac, wpis WHERE wpis LIKE 'S%';
+
+kw10
+SELECT imie, nazwisko FROM osoby WHERE imie LIKE 'A%';
+
+kw11
+SELECT zadanie, data FROM zadania WHERE zadanie LIKE '%mebli' OR zadanie LIKE '%mebli%' OR zadanie LIKE 'mebli%' ORDER BY data ASC;
+
+kw12
+SELECT nick, YEAR(CURRENT_DATE()) - rejestracja AS latNaForum WHERE nick = "Jacek" OR nick = "Tomek" OR nick = "Monika" 
+
+kw13
+SELECT FLOOR(AVG(rokUr)) as "Średni rok urodzenia" FROM uczestnicy;
+
+kw14
+SELECT imie, nazwisko, opis, zdjecie FROM osoby WHERE Hobby_id = 1 OR Hobby_id = 2 OR Hobby_id = 6;
+
+kw15
+SELECT id, zdjecie FROM osoby WHERE imie = "Monika" ORDER BY id DESC LIMIT 5;
+
+kw16
+SELECT id_pok, sezon FROM rezerwacje WHERE liczba_dn > 7;
+
+kw17
+SELECT SUM(liczba_dn) FROM rezerwacje WHERE sezon = "zima";
+
+kw18
+SELECT nazwa, plik FROM towar ORDER BY id DESC LIMIT 10;
+
+kw19
+SELECT pseudonim, klasa FROM zawodnicy ORDER BY RAND LIMIT 2;
+
+kw20
+SELECT liczbaDni, AVG(cena) as "sredniaCena" GROUP BY liczbaDni;

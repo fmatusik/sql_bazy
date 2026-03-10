@@ -40,6 +40,7 @@ SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta 
 operatory logiczne: and && or || not !
 
 
+
 policzy jaką liczbę odbitek z aliasem "liczba odbitek" mamy w zamówieniach dla klienta o NIE nr_klienta-2,3,4
 SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta < 2 and nr_klienta > 4;
 SELECT SUM(liczba_odbitek) AS 'liczba odpitek' from zamowienia WHERE nr_klienta NOT BETWEEN 2 and 4;
