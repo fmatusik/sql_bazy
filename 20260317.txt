@@ -1,0 +1,23 @@
+BAZA DANYCH SAMOCHODY
+
+
+
+inner join / join - część wspólna obydwu tabeli
+left join - część wspólna + niepasujące z lewej tabeli
+right join - część wspólna + niepasujące z prawej tabeli
+
+
+Wypisze marke i model oraz nazwe koloru
+SELECT p.marka, p.model, k.nazwa from pojazdy p INNER JOIN kolory k where p.kolor=k.id;
+
+gdzie kolor zielony
+SELECT p.marka, p.model, k.nazwa from pojazdy p INNER JOIN kolory k where p.kolor=k.id && k.nazwa = "zielony";
+
+ile?
+SELECT COUNT(p.id) from pojazdy p INNER JOIN kolory k where p.kolor=k.id && k.nazwa = "zielony";
+
+ile pojazdów kazdego koloru
+SELECT k.nazwa, COUNT(p.id) from pojazdy p INNER JOIN kolory k where p.kolor=k.id GROUP BY k.nazwa;
+
+posortowane wg ilosc pojazdow
+SELECT k.nazwa, COUNT(p.id) as "ilosc pojazdow" from pojazdy p INNER JOIN kolory k where p.kolor=k.id GROUP BY k.nazwa ORDER BY count(p.id) DESC;
